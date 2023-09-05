@@ -95,23 +95,25 @@ public class JobData {
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
-        for (HashMap<String, String> row : allJobs) {
-            // Check if any column's value contains the search term
+        for (HashMap<String, String> jobHashMap : allJobs) {
+
             boolean found = false;
-            for (String column : row.keySet()) {
-                String columnValue = row.get(column);
+
+            for (String column : jobHashMap.keySet()) {
+
+                String columnValue = jobHashMap.get(column);
+
                 if (columnValue.toLowerCase().contains(value.toLowerCase())) {
                     found = true;
-                    break; // No need to check other columns for this job
                 }
             }
 
             if (found) {
-                jobs.add(row);
+                jobs.add(jobHashMap);
             }
-            return jobs;
         }
-        return null;
+
+        return jobs;
     }
 
 
